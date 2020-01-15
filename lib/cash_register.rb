@@ -1,12 +1,11 @@
 require 'pry'
 class CashRegister
-  attr_accessor :total, :discount, :price, :items, :last_item
+  attr_accessor :total, :discount, :price, :items
 
   def initialize(discount = 0)
     @total = 0
     @discount = discount
     @items = []
-    @last_item = @items[-1]
   end
 
   def add_item(item, price, quantity = 1)
@@ -34,7 +33,8 @@ class CashRegister
   end
 
   def void_last_transaction
-    @total = @items.remove(@last_item)
+    @items.pop
+    @total
   end
 
 end
